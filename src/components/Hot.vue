@@ -44,7 +44,6 @@
     async function getData(){
       // 获取服务器的数据, 对this.allData进行赋值之后, 调用updateChart方法更新图表
       const { data: ret } = await axios.get('/echarts/company')
-      console.log(ret)
       allData = ret
       updateChart()
       startInterval()
@@ -90,8 +89,6 @@
             children: item.children
           }
         })
-        console.log("sss",allData[currentIndex].children)
-        console.log("ppp",seriesData)
       // 图例数据
       const legendData = allData[currentIndex].children.map(item => {
           return item.name
@@ -224,7 +221,7 @@
     toLeft,
     toRight,
     state,
-    screenAdapter 
+    screenAdapter
   };
     }
   });

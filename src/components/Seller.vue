@@ -9,6 +9,7 @@
   import * as echarts from "echarts";
 
   import { mapState,useStore } from 'vuex'
+  import axios from 'axios'
 
   export default defineComponent({
     name: 'echarts',
@@ -35,11 +36,10 @@
     })
 
 
-      
-    /* 获取数据 */  
+
+    /* 获取数据 */
    function getData(){
-    proxy.$axios.get('seller').then(res => {
-      console.log(res.data)
+    axios.get('echarts/chuku').then(res => {
       allData = res.data
           // 对allData进行从大到小的排序
       allData.sort((a, b) => {
@@ -49,7 +49,7 @@
     updateChart()
     startInterval()
     })
-    
+
     }
 
     //动画函数
@@ -68,7 +68,7 @@
 
     // 更新数据 显示图标
     function updateChart() {
-      
+
       const start = (currentPage -1) * 5
       const end = currentPage * 5
       const showData = allData.slice(start, end)
@@ -78,9 +78,9 @@
     })
     const sellerValues = showData.map((item) => {
       return item.value
-    })  
+    })
 
-    myChart.setOption({ 
+    myChart.setOption({
       yAxis: {
         data: sellerNames
       },
@@ -127,7 +127,7 @@
       console.log("ppp",theme)
       let initOption = {
         title: {
-          text: '▎商家销售统计',
+          text: '▎今日出库统计',
           left: 20,
           top: 20
         },
@@ -194,7 +194,7 @@
         startInterval()
       })
     }
-   
+
 
   onMounted(() => {
     initT();

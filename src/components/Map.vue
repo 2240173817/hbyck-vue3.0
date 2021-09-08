@@ -12,7 +12,6 @@
   import { getProvinceMapInfo } from '@/utils/map_utils'
   import { useStore } from "vuex";
 
-
   export default defineComponent({
     name: 'echarts',
     setup() {
@@ -25,7 +24,7 @@
 
     /* 获取数据 */
    function getData(){
-    proxy.$axios.get('map').then(res => {
+    axios.get('ck/map/map').then(res => {
           console.log(res.data)
           allData = res.data
           updateChart()
@@ -42,11 +41,23 @@
           type: 'effectScatter',
           rippleEffect: {
             scale: 5,
-            brushType: 'stroke'
+            brushType: 'stroke',
+            color:'	#FFC0CB'
           },
           name: item.name,
           data: item.children,
-          coordinateSystem: 'geo'
+          coordinateSystem: 'geo',
+          itemStyle: {
+
+              color: function(params) {
+                 var colorlist = ['#DA251D','#E67716','#E67716','#E67716']
+                 return colorlist[params.dataIndex]
+
+              },
+              shadowBlur: 10,
+              shadowColor: '#333'
+
+      },
         }
       })
       const dataOption  = {
@@ -95,7 +106,7 @@
       echarts.registerMap('china', res.data)
       const initOption = {
         title: {
-          text: '▎商家分布',
+          text: '▎客户地图分布',
           left: 20,
           top: 20
         },

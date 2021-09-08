@@ -165,7 +165,7 @@
     ]
     const initOption = {
       title: {
-        text: '▎ 库存销售量',
+        text: '▎ 待定图表',
         left: 20,
         top: 20
       },
@@ -177,7 +177,7 @@
         label: {
           show: true,
           position: 'center',
-        }, 
+        },
         labelLine: {
           show: false
         }

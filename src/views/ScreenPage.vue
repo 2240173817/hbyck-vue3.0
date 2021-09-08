@@ -7,10 +7,10 @@
       <span class="logo">
         <img :src="logoSrc" alt />
       </span>
-      <span class="title">电商平台实时监控系统</span>
+      <span class="title">红宝云仓库可视化系统</span>
       <div class="title-right">
         <img :src="themeSrc" class="qiehuan" @click="changeTheme" />
-        <span class="datetime">2049-01-01 00:00:00</span>
+        <span class="datetime">2021-01-27</span>
       </div>
     </header>
     <div class="screen-body">
@@ -297,11 +297,11 @@ export default defineComponent({
     width: 27.6%;
     #left-top {
       position: relative;
-      height: 53%;
+      height: 42.5%;
     }
     #left-bottom {
       position: relative;
-      height: 31%;
+      height: 42.5%;
       margin-top: 25px;
     }
   }

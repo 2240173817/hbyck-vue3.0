@@ -40,11 +40,10 @@
       // 获取服务器的数据, 对this.allData进行赋值之后, 调用updateChart方法更新图表
       const { data: ret } = await axios.get('/echarts/rank')
       allData = ret
-      console.log("sss",allData)
       // 对数据进行排序, 从大到小排序
        allData.sort((a, b) => {
         return b.value - a.value
-      }) 
+      })
       updateChart()
       startInterval()
   }
