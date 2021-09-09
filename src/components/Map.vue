@@ -102,7 +102,7 @@
 
    const initT = async function(){
       myChart = echarts.init(myRef.value, theme.value);
-      const res = await axios.get('http://localhost:8999/static/map/china.json')
+      const res = await axios.get('/map/china.json')
       echarts.registerMap('china', res.data)
       const initOption = {
         title: {
@@ -129,7 +129,8 @@
       myChart.on('click', async arg => {
         // arg.name 就是所点击的省份名称, 是中文
         const provinceInfo = getProvinceMapInfo(arg.name)
-        const { data: ret } = await axios.get('http://localhost:8999' + provinceInfo.path)
+        const { data: ret } = await axios.get('/map' + provinceInfo.path)
+        console.log("????",ret)
           echarts.registerMap(provinceInfo.key, ret)
           myChart.setOption({
             geo: {

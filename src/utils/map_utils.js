@@ -36,7 +36,7 @@ const name2pinyin = {
 }
 
 export function getProvinceMapInfo (arg) {
-  const path = `/static/map/province/${name2pinyin[arg]}.json`
+  const path = `/province/${name2pinyin[arg]}.json`
   return {
     key: name2pinyin[arg],
     path: path
