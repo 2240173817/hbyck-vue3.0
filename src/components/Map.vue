@@ -13,12 +13,12 @@
   import { getMockMerchantData } from '@/utils/merchant_mock_data'
   import { useStore } from "vuex";
 
-  const TOP_MERCHANT_COUNT = 3
+  const TOP_MERCHANT_COUNT = 10
   const TOP_SERIES_ID = 'top-merchant-series'
-  const TOP_SERIES_NAME = 'TOP3商家'
+  const TOP_SERIES_NAME = 'TOP10商家'
   const BLINK_INTERVAL = 700
   const GROUP_COLORS = ['#DA251D', '#E67716', '#4FC3F7']
-  // 前三商家标签错开，避免相邻商家文字重叠
+  // 前十商家标签错开，避免相邻商家文字重叠
   const TOP_LABEL_POSITIONS = {
     北京: 'right',
     上海: 'right',
@@ -91,7 +91,7 @@
         }
       }
 
-      /* 刷新图表：普通商家点 + 前三商家高亮闪烁 */
+      /* 刷新图表：普通商家点 + 前十商家高亮闪烁 */
       function updateChart () {
         if (!myChart || myChart.isDisposed() || !chartReady) return
         const legendArr = []
@@ -120,7 +120,7 @@
           }
         })
 
-        // 按销售额从高到低取前三商家
+        // 按销售额从高到低取前十商家
         const topMerchants = allPoints
           .slice()
           .sort((a, b) => b.value[2] - a.value[2])
@@ -185,7 +185,7 @@
         startBlink()
       }
 
-      /* 前三商家高亮闪烁动画 */
+      /* 前十商家高亮闪烁动画 */
       function startBlink () {
         stopBlink()
         blinkTimerId = setInterval(() => {
